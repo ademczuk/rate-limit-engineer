@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Usage</title>
+<style>
+*{box-sizing:border-box}body{margin:0;background:#141414;color:#f2f0eb;font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;font-size:15px}.app{width:100%;max-width:430px;min-height:100vh;margin:auto;padding:22px 16px 34px}.status{display:flex;justify-content:space-between;color:#f2f0eb;font-weight:650;font-size:14px}.header{height:64px;display:flex;align-items:center;justify-content:space-between}.title{font-family:Georgia,serif;font-size:31px;letter-spacing:-.5px}.manual .title{font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;font-weight:800;font-size:29px}.back{color:#f2f0eb;font-size:29px;width:42px}.iphone-back{display:none;width:34px;height:34px;border-radius:50%;background:#292927;text-align:center;line-height:31px;font-size:27px}.manual .android-back{display:none}.manual .iphone-back{display:block}.head-right{display:flex;align-items:center;gap:11px;min-width:42px;justify-content:flex-end}.info,.refresh{border:0;color:#f2f0eb;background:transparent;font:inherit;cursor:pointer}.info{font-size:19px;font-family:Georgia,serif;width:25px;height:28px}.refresh-wrap{display:none;background:#292927;border-radius:20px;padding:4px 2px}.manual .refresh-wrap{display:block}.refresh{width:32px;height:30px;font-size:20px;line-height:20px}.refresh.spin{animation:spin .8s linear infinite}.label{color:#9b9a95;font-size:13px;font-weight:700;letter-spacing:.04em;margin:16px 4px 9px;text-transform:uppercase}.card{background:#1f1f1e;border-radius:20px;padding:3px 14px}.manual .card{border-radius:28px}.usage-row,.reset-row{padding:15px 0}.usage-row+.usage-row,.reset-row+.reset-row{border-top:0 solid #393936}.manual .usage-row+.usage-row,.manual .reset-row+.reset-row{border-top-width:1px}.row-top,.reset-top{display:flex;align-items:center;justify-content:space-between;gap:12px;font-weight:700}.used{font-size:13px;color:#d1cfca}.track{height:8px;border-radius:10px;margin:11px 0 8px;overflow:hidden;position:relative;background:#0e2244}.fill{height:100%;border-radius:10px;width:0;background-color:#2f6fdb;transition:width .12s linear,background-color .12s linear}.mark{position:absolute;top:0;width:2px;height:8px;background:#f2f0eb;opacity:.85}.sub{font-size:12px;color:#9b9a95}.reset-name{display:flex;align-items:center;gap:5px}.little-i{border:1px solid #9b9a95;border-radius:50%;color:#9b9a95;font-size:10px;width:14px;height:14px;text-align:center;line-height:12px}.reset-row{display:flex;align-items:center;justify-content:space-between;gap:8px}.reset-copy{min-width:0}.reset-btn{border:1px solid transparent;border-radius:22px;padding:9px 12px;background:#454541;color:#d6d4cf;font:600 13px system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;white-space:nowrap;cursor:pointer}.reset-btn.armed{background:#f2f0eb;color:#171717;border-color:#fff}.reset-btn.shake{animation:shake .32s linear}.usage-row.flash{animation:flash .4s ease-out}.foot{color:#9b9a95;font-size:12px;line-height:1.45;margin:17px 4px}.banner{position:fixed;left:50%;top:15px;transform:translateX(-50%);max-width:390px;width:calc(100% - 30px);background:#e7e4dd;color:#1b1b19;border-radius:14px;padding:10px 13px;text-align:center;font-size:13px;font-weight:700;z-index:4}.hidden{display:none!important}.shade{position:fixed;inset:0;background:rgba(0,0,0,.68);display:flex;align-items:center;justify-content:center;padding:18px;z-index:8}.overlay{width:min(360px,100%);background:#242422;border:1px solid #4a4a45;border-radius:24px;padding:25px 22px;text-align:center;box-shadow:0 18px 50px #000}.overlay h1{font-size:22px;line-height:1.22;margin:0 0 17px}.overlay h2{font-size:25px;margin:0 0 10px}.how{color:#d0cec8;text-align:left;font-size:14px;line-height:1.46;margin:0 0 19px}.how p{margin:9px 0}.primary{width:100%;border:0;border-radius:20px;background:#f2f0eb;color:#1a1a18;padding:12px;font:750 15px system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;cursor:pointer}.secondary{border:0;background:transparent;color:#cfcac0;margin-top:10px;padding:7px;font:650 14px system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;cursor:pointer}.over-stats{color:#d5d2cb;line-height:1.6;margin:13px 0 19px}@keyframes shake{0%,100%{transform:translateX(0)}25%{transform:translateX(-4px)}75%{transform:translateX(4px)}}@keyframes flash{0%{background:#3d4537}100%{background:transparent}}@keyframes spin{to{transform:rotate(360deg)}}@media(prefers-reduced-motion:reduce){*,.refresh.spin{animation:none!important;transition:none!important}}
+button.little-i{background:transparent;padding:0;cursor:pointer}
+</style>
+</head>
+<body>
+<main class="app" id="app">
+  <div class="status"><span id="scoreText">Resets: 0</span><span id="bestText">Best: 0</span></div>
+  <div class="header"><div class="back android-back">‹</div><div class="iphone-back">‹</div><div class="title">Usage</div><div class="head-right"><div class="refresh-wrap"><button class="refresh" id="refreshBtn" type="button" aria-label="Refresh usage">↻</button></div><button class="info" id="helpBtn" type="button" aria-label="Help">i</button></div></div>
+  <div class="label">Weekly limits</div>
+  <section class="card">
+    <div class="usage-row" id="row-all"><div class="row-top"><span>All models</span><span class="used" id="used-all">20% used</span></div><div class="track" id="track-all"><div class="fill" id="fill-all"></div><div class="mark" id="mark-all"></div></div><div class="sub" id="line-all">Resets Wed 2:00 am</div></div>
+    <div class="usage-row" id="row-fable"><div class="row-top"><span>Fable only</span><span class="used" id="used-fable">35% used</span></div><div class="track" id="track-fable"><div class="fill" id="fill-fable"></div><div class="mark" id="mark-fable"></div></div><div class="sub" id="line-fable">Resets Wed 2:00 am</div></div>
+  </section>
+  <div class="label">Limit resets</div>
+  <section class="card">
+    <div class="reset-row"><div class="reset-copy"><div class="reset-name">Fable reset <button class="little-i" id="rowHelp" type="button" aria-label="Help">i</button></div><div class="sub" id="expiry-fable">Expires 9 Mar</div></div><button class="reset-btn" id="btn-fable" type="button">Reset for free</button></div>
+    <div class="reset-row"><div class="reset-copy"><div class="reset-name">Weekly reset</div><div class="sub" id="expiry-all">Expires 10 Dec</div></div><button class="reset-btn" id="btn-all" type="button">Reset for free</button></div>
+  </section>
+  <p class="foot">Within a type, the soonest-expiring reset is used first.</p>
+</main>
+<div class="banner hidden" id="banner">Shift change: you are on iPhone now. Tap refresh to see usage.</div>
+<div class="shade" id="startOverlay"><div class="overlay"><h1>Forward Deployed 'Rate-Limit' Engineer simulator</h1><div class="how"><p>Wait until a reset is armed.</p><p>Pressing a locked reset adds 4 points and makes that bar's next reset score nothing.</p><p>On iPhone, the page only updates when you tap refresh.</p><p>Any reset press also updates the page.</p></div><button class="primary" id="startBtn" type="button">Start shift</button><button class="secondary" id="hardBtn" type="button">Start on iPhone (hard)</button></div></div>
+<div class="shade hidden" id="helpOverlay"><div class="overlay"><h2>How to play</h2><div class="how"><p>Wait until a reset is armed.</p><p>Pressing a locked reset adds 4 points and makes that bar's next reset score nothing.</p><p>On iPhone, the page only updates when you tap refresh.</p><p>Any reset press also updates the page.</p></div><button class="primary" id="closeHelp" type="button">Close</button></div></div>
+<div class="shade hidden" id="overOverlay"><div class="overlay"><h2>Limit reached</h2><div class="over-stats" id="overText"></div><button class="primary" id="againBtn" type="button">Try again</button></div></div>
+<script>
+const CONFIG={startAll:20,startFable:35,baseAll:5,baseFable:7,growth:.06,maxRate:2,baseArm:60,armGrowth:2.5,maxArm:93,lockedCost:4,allPeriod:1900,fablePeriod:1300,refreshWait:800,stepMax:100,testStepMax:50,bannerMs:2500};
+const query=location.search;
+const testMode=new URLSearchParams(query).get('test')==='1';
+const app=document.getElementById('app');
+const scoreText=document.getElementById('scoreText');
+const bestText=document.getElementById('bestText');
+const usedAll=document.getElementById('used-all');
+const usedFable=document.getElementById('used-fable');
+const fillAll=document.getElementById('fill-all');
+const fillFable=document.getElementById('fill-fable');
+const markAll=document.getElementById('mark-all');
+const markFable=document.getElementById('mark-fable');
+const rowAll=document.getElementById('row-all');
+const rowFable=document.getElementById('row-fable');
+const btnAll=document.getElementById('btn-all');
+const btnFable=document.getElementById('btn-fable');
+const lineAll=document.getElementById('line-all');
+const lineFable=document.getElementById('line-fable');
+const expiryAll=document.getElementById('expiry-all');
+const expiryFable=document.getElementById('expiry-fable');
+const refreshBtn=document.getElementById('refreshBtn');
+const banner=document.getElementById('banner');
+const startOverlay=document.getElementById('startOverlay');
+const helpOverlay=document.getElementById('helpOverlay');
+const overOverlay=document.getElementById('overOverlay');
+const overText=document.getElementById('overText');
+let best=0;
+let phase='start';
+let mode='live';
+let startLevel=0;
+let score=0;
+let level=0;
+let gameTime=0;
+let manualStart=0;
+let refreshUntil=0;
+let refreshReady=false;
+let lostOn=null;
+let helpOpen=false;
+let bannerUntil=0;
+let lastStamp=0;
+let queued=[];
+let bars={all:{trueValue:20,shown:20,armed:false,shownArmed:false,clean:true},fable:{trueValue:35,shown:35,armed:false,shownArmed:false,clean:true}};
+function armAt(){return Math.min(CONFIG.maxArm,CONFIG.baseArm+CONFIG.armGrowth*level)}
+function rateAll(){return CONFIG.baseAll*Math.min(CONFIG.maxRate,1+CONFIG.growth*level)}
+function rateFable(){return CONFIG.baseFable*Math.min(CONFIG.maxRate,1+CONFIG.growth*level)}
+function color(value){if(value<75)return ['#2f6fdb','#0e2244'];if(value<90)return ['#f5a623','#3a2a0c'];return ['#d9423e','#3a1210']}
+function setArm(bar){if(!bar.armed&&bar.trueValue>=armAt())bar.armed=true}
+function snapshot(){bars.all.shown=bars.all.trueValue;bars.fable.shown=bars.fable.trueValue;bars.all.shownArmed=bars.all.armed;bars.fable.shownArmed=bars.fable.armed}
+function setButton(button,armed){button.classList.toggle('armed',armed);button.setAttribute('aria-label',armed?'Reset for free':'Locked; pressing adds 4 usage points')}
+function drawBar(name,bar,used,fill,mark,button){const shown=Math.floor(bar.shown);const palette=color(bar.shown);used.textContent=shown+'% used';fill.style.width=Math.max(0,Math.min(100,bar.shown))+'%';fill.style.backgroundColor=palette[0];fill.parentElement.style.backgroundColor=palette[1];mark.style.left=Math.min(100,armAt())+'%';mark.classList.toggle('hidden',bar.shownArmed||phase!=='play');setButton(button,bar.shownArmed)}
+function draw(){app.classList.toggle('manual',mode==='manual');scoreText.textContent='Resets: '+score;bestText.textContent='Best: '+best;drawBar('all',bars.all,usedAll,fillAll,markAll,btnAll);drawBar('fable',bars.fable,usedFable,fillFable,markFable,btnFable);const manual=mode==='manual';lineAll.textContent=manual?'Resets Wed 2:00 AM':'Resets Wed 2:00 am';lineFable.textContent=manual?'Resets Wed 2:00 AM':'Resets Wed 2:00 am';expiryAll.textContent=manual?'Expires Dec 10':'Expires 10 Dec';expiryFable.textContent=manual?'Expires Mar 9':'Expires 9 Mar';refreshBtn.classList.toggle('spin',manual&&!refreshReady);banner.classList.toggle('hidden',!(phase==='play'&&bannerUntil>gameTime));startOverlay.classList.toggle('hidden',phase!=='start');helpOverlay.classList.toggle('hidden',!helpOpen);overOverlay.classList.toggle('hidden',phase!=='over');if(phase==='over')overText.textContent=(lostOn==='fable'?'Fable only':'All models')+' hit 100%.  Resets: '+score+'  Best: '+best}
+function endGame(name){if(phase!=='play')return;const bar=name==='all'?bars.all:bars.fable;bar.trueValue=100;lostOn=name;phase='over';bars.all.armed=false;bars.fable.armed=false;snapshot();bars.all.shownArmed=false;bars.fable.shownArmed=false;refreshReady=false;queued=[];if(score>best)best=score;draw()}
+function enterManual(){mode='manual';manualStart=gameTime;refreshUntil=gameTime;refreshReady=true;bannerUntil=gameTime+CONFIG.bannerMs;snapshot()}
+function addLive(ms){const ra=rateAll();const rf=rateFable();const ta=(100-bars.all.trueValue)*1000/ra;const tf=(100-bars.fable.trueValue)*1000/rf;let part=ms;let loser=null;if(tf<=ta&&tf<=ms){part=tf;loser='fable'}else if(ta<tf&&ta<=ms){part=ta;loser='all'}bars.all.trueValue+=ra*part/1000;bars.fable.trueValue+=rf*part/1000;gameTime+=part;if(loser){endGame(loser);return}setArm(bars.all);setArm(bars.fable);snapshot()}
+function jump(name){const bar=name==='all'?bars.all:bars.fable;const amount=(name==='all'?rateAll():rateFable())*(name==='all'?CONFIG.allPeriod:CONFIG.fablePeriod)/1000;const next=bar.trueValue+amount;if(!bar.armed&&next>=100){bar.trueValue=99;setArm(bar);return false}bar.trueValue=Math.min(100,next);setArm(bar);if(bar.trueValue>=100){endGame(name);return true}return false}
+function nextClock(name){const period=name==='all'?CONFIG.allPeriod:CONFIG.fablePeriod;return manualStart+(Math.floor((gameTime-manualStart)/period)+1)*period}
+function addManual(ms){const target=gameTime+ms;while(phase==='play'&&gameTime<target){const na=nextClock('all');const nf=nextClock('fable');const event=Math.min(target,na,nf);gameTime=event;if(event===nf){if(jump('fable'))return}if(event===na){if(jump('all'))return}}refreshReady=gameTime>=refreshUntil}
+function advance(ms){if(phase!=='play'||ms<=0)return;if(mode==='live')addLive(ms);else addManual(ms);if(phase==='play')draw()}
+function flash(row){row.classList.remove('flash');void row.offsetWidth;row.classList.add('flash')}
+function shake(button){button.classList.remove('shake');void button.offsetWidth;button.classList.add('shake')}
+function pressReset(name){if(phase!=='play')return;const bar=name==='all'?bars.all:bars.fable;const button=name==='all'?btnAll:btnFable;const row=name==='all'?rowAll:rowFable;if(bar.armed){bar.trueValue=0;bar.armed=false;if(bar.clean){score+=1;level=startLevel+score;flash(row)}bar.clean=true;if(mode==='live'&&level>=8)enterManual()}else{bar.trueValue=Math.min(100,bar.trueValue+CONFIG.lockedCost);bar.clean=false;setArm(bar);shake(button);if(bar.trueValue>=100){endGame(name);return}}if(phase==='play'){if(mode==='live')snapshot();else snapshot();draw()}}
+function pressRefresh(){if(phase!=='play'||mode!=='manual'||!refreshReady)return;snapshot();refreshUntil=gameTime+CONFIG.refreshWait;refreshReady=false;draw()}
+function start(opts){phase='play';mode='live';startLevel=opts&&opts.hard?8:0;score=0;level=startLevel;gameTime=0;manualStart=0;refreshUntil=0;refreshReady=false;lostOn=null;helpOpen=false;bannerUntil=0;queued=[];bars.all.trueValue=CONFIG.startAll;bars.all.shown=CONFIG.startAll;bars.all.armed=false;bars.all.shownArmed=false;bars.all.clean=true;bars.fable.trueValue=CONFIG.startFable;bars.fable.shown=CONFIG.startFable;bars.fable.armed=false;bars.fable.shownArmed=false;bars.fable.clean=true;if(startLevel>=8)enterManual();snapshot();draw();lastStamp=performance.now()}
+function queueReset(name){if(phase==='play'&&!helpOpen)queued.push({kind:'reset',name:name})}
+function queueRefresh(){if(phase==='play'&&!helpOpen)queued.push({kind:'refresh'})}
+function applyQueue(){const items=queued;queued=[];for(let i=0;i<items.length&&phase==='play';i+=1){const item=items[i];if(item.kind==='reset'){if(item.name==='all')pressReset('all');else if(item.name==='fable')pressReset('fable')}else if(item.kind==='refresh')pressRefresh()}}
+function frame(stamp){if(!testMode){if(phase==='play'&&!helpOpen&&!document.hidden){let elapsed=Math.round(Math.min(stamp-lastStamp,CONFIG.stepMax));if(elapsed>0)advance(elapsed);if(phase==='play')applyQueue()}lastStamp=stamp;requestAnimationFrame(frame)}}
+document.getElementById('startBtn').addEventListener('click',function(){start()});
+document.getElementById('hardBtn').addEventListener('click',function(){start({hard:true})});
+document.getElementById('againBtn').addEventListener('click',function(){phase='start';queued=[];draw()});
+document.getElementById('helpBtn').addEventListener('click',function(){if(phase==='play'){helpOpen=true;queued=[];draw()}});
+document.getElementById('rowHelp').addEventListener('click',function(){if(phase==='play'){helpOpen=true;queued=[];draw()}});
+document.getElementById('closeHelp').addEventListener('click',function(){helpOpen=false;lastStamp=performance.now();draw()});
+btnAll.addEventListener('click',function(){if(!testMode)queueReset('all')});
+btnFable.addEventListener('click',function(){if(!testMode)queueReset('fable')});
+refreshBtn.addEventListener('click',function(){if(!testMode)queueRefresh()});
+document.addEventListener('visibilitychange',function(){if(!document.hidden)lastStamp=performance.now();if(document.hidden)queued=[]});
+document.addEventListener('keydown',function(event){if(testMode||phase!=='play'||helpOpen||event.repeat)return;if(event.key==='f'||event.key==='F'){event.preventDefault();queueReset('fable')}else if(event.key==='w'||event.key==='W'){event.preventDefault();queueReset('all')}else if(event.key==='r'||event.key==='R'){event.preventDefault();queueRefresh()}});
+if(testMode){window.__fdrle={start:function(opts){start(opts)},tick:function(ms){if(phase!=='play')return;let left=Math.max(0,Math.round(ms));while(left>0&&phase==='play'){const part=Math.min(CONFIG.testStepMax,left);advance(part);left-=part}draw()},press:function(name){if(name==='all')pressReset('all');else if(name==='fable')pressReset('fable');draw()},refresh:function(){pressRefresh();draw()},state:function(){return{phase:phase,mode:mode,all:bars.all.trueValue,fable:bars.fable.trueValue,shownAll:bars.all.shown,shownFable:bars.fable.shown,score:score,level:level,armAt:armAt(),rateAll:rateAll(),rateFable:rateFable(),armedAll:phase==='play'?bars.all.armed:false,armedFable:phase==='play'?bars.fable.armed:false,shownArmedAll:phase==='play'?bars.all.shownArmed:false,shownArmedFable:phase==='play'?bars.fable.shownArmed:false,refreshReady:phase==='play'?refreshReady:false,lostOn:lostOn}}};}
+draw();
+if(!testMode)requestAnimationFrame(frame);
+</script>
+</body>
+</html>
